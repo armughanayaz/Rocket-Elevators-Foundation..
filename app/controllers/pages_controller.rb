@@ -25,4 +25,8 @@ class PagesController < ApplicationController
       format.html
     end 
   end
+
+  def admin_stats
+  end
+  
 end

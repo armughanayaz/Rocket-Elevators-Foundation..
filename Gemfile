@@ -86,8 +86,6 @@ gem 'jquery-ui-rails'
 
 gem 'execjs'
 
-gem 'therubyracer', :platforms => :ruby
-
 gem 'faker'
 
 gem 'pg'
