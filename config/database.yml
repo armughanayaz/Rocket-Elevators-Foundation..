@@ -22,8 +22,9 @@ postgres: &postgres
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: lemyt
- 
+  #username: postgres
+  #password: allo1392
+
 development:
     <<: *default
     database: Rocket_Elevators_Information_System_development

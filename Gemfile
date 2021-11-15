@@ -86,8 +86,6 @@ gem 'jquery-ui-rails'
 
 gem 'execjs'
 
-
-
 gem 'faker'
 
 gem 'pg'
