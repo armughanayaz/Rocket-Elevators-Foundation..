@@ -1,3 +1,18 @@
 <h1>TEST 1 2 3</h1>
-<div class='googleMap'></div>
+<div id="map" style="height: 400px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
+async defer></script>
+
 <div class='IBMWatson'></div>
+<script>
+    var address = "<%= @data_address %>";
+    var test = address.split("#&lt;Address")
+    function initMap() {
+        const myLatLng = { lat: 37.09024, lng: -95.712891 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: myLatLng,
+    });
+}
+
+</script>
