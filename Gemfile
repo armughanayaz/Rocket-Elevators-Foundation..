@@ -86,7 +86,7 @@ gem 'jquery-ui-rails'
 
 gem 'execjs'
 
-gem 'therubyracer', :platforms => :ruby
+
 
 gem 'faker'
 
@@ -97,3 +97,5 @@ gem 'secondbase'
 gem 'chartkick'
 
 gem 'groupdate'
+
+gem 'ibm_watson', '~> 0.1.1'
