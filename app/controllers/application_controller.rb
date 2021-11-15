@@ -3,6 +3,7 @@ require "ibm_watson/websocket/recognize_callback"
 require "ibm_watson/authenticators"
 require "json"
 
+
 class ApplicationController < ActionController::Base
     helper_method :watson
 
@@ -11,28 +12,20 @@ class ApplicationController < ActionController::Base
             apikey: "3IjEtQxRYd5hHScxyl1I5n5Ob9_t88PnYYmR1RIY1I1R"
         )
 
-        speech_to_text = IBMWatson::SpeechToTextV1.new(
+        speech_to_text = TextToSpeechV1.new(
             authenticator: authenticator
         )
-        msg = "Hello"
+
         speech_to_text.service_url = "https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/fae3fc6d-4447-4d5a-b798-eb26daa0295f"
-
-        puts JSON.pretty_generate(speech_to_text.list_models.result)
-
-        puts JSON.pretty_generate(speech_to_text.get_model(model_id: "en-US_BroadbandModel").result)
-
-        File.open("goodbye-prompt.wav") do |audio_file|
-                prompt = text_to_speech.add_custom_prompt(
-                customization_id: "test1",
-                prompt_id: "goodbye",
-                metadata: {
-                    'prompt_text': 'Thank you and good-bye!',
-                    'speaker_id': 'ted1'
-                },
-                file: audio_file
-            )
-            puts JSON.pretty_generate(recognition)
-        end
-
+        
+        output_file = File.new("output.wav", "w")
+        output_file.close
+            
+        response = speech_to_text.synthesize(
+            text: "Hello world!",
+            accept: "audio/wav",
+            voice: "en-US_AllisonVoice"
+          ).result
+        return response
     end
 end
