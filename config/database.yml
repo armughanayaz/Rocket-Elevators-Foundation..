@@ -12,19 +12,18 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Allo1392!
+  username: ted
+  password: tedtedted
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: allo1392
-
+  username: lemyt
+ 
 development:
     <<: *default
     database: Rocket_Elevators_Information_System_development
