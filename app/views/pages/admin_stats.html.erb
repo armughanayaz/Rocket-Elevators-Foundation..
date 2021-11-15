@@ -5,14 +5,18 @@ async defer></script>
 
 <div class='IBMWatson'></div>
 <script>
-    var address = "<%= @data_address %>";
-    var test = address.split("#&lt;Address")
+    var item = `<%= @address.to_json.html_safe %>`
+    var test = item.substring(1)
+    var test2 = test.slice(0, -1);
+    var array = JSON.parse(test2)
+
     function initMap() {
         const myLatLng = { lat: 37.09024, lng: -95.712891 };
         const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: myLatLng,
     });
+    console.log(array)
 }
 
 </script>

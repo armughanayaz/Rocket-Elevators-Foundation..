@@ -1,3 +1,4 @@
+require "json"
 class PagesController < ApplicationController
   def index
   end
@@ -27,9 +28,7 @@ class PagesController < ApplicationController
   end
 
   def admin_stats
-    @address = Address.find_by_sql("SELECT a.numberAndStreet, a.city, a.postalCode, a.country FROM addresses a")
-    @data_address = []
-    @address.map { |n| @data_address.push([n['numberAndStreet'],n['city'],n['postalCode'],n['country']])}
+    @address = Address.all.to_json
   end
   
 end
