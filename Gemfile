@@ -96,4 +96,4 @@ gem 'chartkick'
 
 gem 'groupdate'
 
-gem 'ibm_watson', '~> 0.1.1'
+gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', branch: 'master'
