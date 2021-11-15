@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/commercial'
   get 'pages/quote'
   get 'pages/charts'
+  get 'pages/admin_stats'
   get '/quote/new', to: 'quote#new'
   post '/quote', to: 'quote#create'
   post '/contact', to: 'contact#create'
