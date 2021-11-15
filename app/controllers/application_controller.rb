@@ -21,15 +21,14 @@ class ApplicationController < ActionController::Base
         # output_file = File.new("output.wav", "w")
         # output_file.close
         
-        File.open("hello_world.wav", "wb") do |audio_file|
+        File.open("public/hello_world.wav", "wb") do |audio_file|
         response = text_to_speech.synthesize(
-            text: "Hello world!",
+            text: "Hello Hi!",
             accept: "audio/wav",
             voice: "en-US_AllisonVoice"
           ).result
-        puts response
         audio_file.write(response)
         end
-        
+        return ''
     end
 end
