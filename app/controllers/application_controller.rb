@@ -9,14 +9,14 @@ class ApplicationController < ActionController::Base
                 
     def watson
         authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
-            apikey: "3IjEtQxRYd5hHScxyl1I5n5Ob9_t88PnYYmR1RIY1I1R"
+            apikey: ENV["TEXT_TO_SPEECH_APIKEY"]
         )
 
         text_to_speech = IBMWatson::TextToSpeechV1.new(
             authenticator: authenticator
         )
 
-        text_to_speech.service_url = "https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/fae3fc6d-4447-4d5a-b798-eb26daa0295f"
+        text_to_speech.service_url = ENV["TEXT_TO_SPEECH_URL"]
         
         # output_file = File.new("output.wav", "w")
         # output_file.close

@@ -97,3 +97,5 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', branch: 'master'
+
+gem 'figaro'
