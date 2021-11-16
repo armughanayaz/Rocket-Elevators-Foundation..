@@ -168,6 +168,21 @@ end
     }])
 end
 
+1.times do
+    Lead.create([{
+        fullNameContact: Faker::Name.name,
+        compagnyName: Faker::Company.name,
+        email: 'lemyted21@gmail.com',
+        phoneNumber: Faker::PhoneNumber.cell_phone,
+        nameProject: Faker::App.name,
+        descriptionProject: Faker::Lorem.paragraph,
+        department: Faker::Commerce.department,
+        message: Faker::Lorem.paragraph,
+        file: Faker::Number.binary,
+        date: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+    }])
+end
+
 #file = File.join Rails.root, 'db', File.read('./addresses-us-1000.json')
 #data_hash = JSON.parse(file)
 #data_hash_size = data_hash['city'].size
