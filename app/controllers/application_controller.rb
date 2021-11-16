@@ -76,9 +76,8 @@ class ApplicationController < ActionController::Base
             if leadIsCustomer(lead)
                 createFolder(client, '/customers', "/#{lead.compagnyName}")
                 uploadFile(client, "/customers/#{lead.compagnyName}", "/attached_file_#{lead.id}.bin", filecontent)
-                lead.file  = nil
+                lead.update({file: nil})
             end
-
         end
     end
 end
