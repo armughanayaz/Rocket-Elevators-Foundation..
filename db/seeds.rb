@@ -194,7 +194,9 @@ address_id = 0
         postalCode: data_hash['addresses'][address_id]['postalCode'],
         #country: Faker::Address.country,
         country: data_hash['addresses'][address_id]['state'],
-        notes: Faker::Lorem.paragraph
+        notes: Faker::Lorem.paragraph,
+        lat: data_hash['addresses'][address_id]['coordinates']['lat'],
+        long: data_hash['addresses'][address_id]['coordinates']['lng']
     }])
     address_id = address_id + 1
 end 

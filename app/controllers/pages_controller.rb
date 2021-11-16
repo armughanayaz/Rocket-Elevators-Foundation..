@@ -1,3 +1,4 @@
+require "json"
 class PagesController < ApplicationController
   def index
   end
@@ -27,6 +28,15 @@ class PagesController < ApplicationController
   end
 
   def admin_stats
+    @address = Address.all.to_json
+    @info_marker = Building.find_by_sql('SELECT a.numberAndStreet AS Address ,c2.fullName AS Client , b.fullNameTechnicalContact AS Contact, COUNT( DISTINCT b2.id) AS NumberOfBattery , COUNT( DISTINCT c.id) AS NumberOfColumn, COUNT(DISTINCT e.id) AS NumberOfElevator
+                                         FROM buildings b 
+                                         JOIN batteries b2 ON b2.buildingId = b.id 
+                                         JOIN `columns` c ON c.batteryId = b2.id 
+                                         JOIN elevators e ON e.columnId = c.id
+                                         JOIN customers c2 ON c2.id = b.customerId
+                                         JOIN addresses a on a.id = b.addressId
+                                         GROUP BY a.numberAndStreet ,c2.fullName , b.fullNameTechnicalContact').to_json
   end
   
 end
