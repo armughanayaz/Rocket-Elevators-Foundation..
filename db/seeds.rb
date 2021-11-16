@@ -168,6 +168,21 @@ end
     }])
 end
 
+1.times do
+    Lead.create([{
+        fullNameContact: "Ted Lemy",
+        compagnyName: Faker::Company.name,
+        email: "lemyted@gmail.com",
+        phoneNumber: "5141112222",
+        nameProject: Faker::App.name,
+        descriptionProject: Faker::Lorem.paragraph,
+        department: Faker::Commerce.department,
+        message: Faker::Lorem.paragraph,
+        file: Faker::Number.binary,
+        date: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+    }])
+end
+
 #file = File.join Rails.root, 'db', File.read('./addresses-us-1000.json')
 #data_hash = JSON.parse(file)
 #data_hash_size = data_hash['city'].size
@@ -201,7 +216,7 @@ end
 
 addressId = 1
 user_id = 101
-100.times do
+99.times do
     Customer.create([{
         userId: user_id,
         dateCreation: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
@@ -210,6 +225,24 @@ user_id = 101
         fullName: Faker::Name.name,
         contactPhone: Faker::PhoneNumber.cell_phone,
         email: Faker::Internet.email,
+        description: Faker::Lorem.paragraph,
+        fullNameTechnicalAuthority: Faker::Name.name,
+        technicalAuthorityPhone: Faker::PhoneNumber.cell_phone,
+        technicalAuthorityEmail: Faker::Internet.email
+    }])
+    user_id = user_id + 1
+    addressId = addressId + 1
+end
+
+1.times do
+    Customer.create([{
+        userId: user_id,
+        dateCreation: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
+        compagnyName: Faker::Company.name,
+        addressId: addressId,
+        fullName: "Ted Lemy",
+        contactPhone: "5141112222",
+        email: "lemyted@gmail.com",
         description: Faker::Lorem.paragraph,
         fullNameTechnicalAuthority: Faker::Name.name,
         technicalAuthorityPhone: Faker::PhoneNumber.cell_phone,

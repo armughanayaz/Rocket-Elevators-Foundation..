@@ -95,3 +95,8 @@ gem 'secondbase'
 gem 'chartkick'
 
 gem 'groupdate'
+
+gem "dropbox-api"
+
+gem 'dropbox_api'
+
