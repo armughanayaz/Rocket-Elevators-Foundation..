@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require 'dropbox-api'
 require 'dropbox_api'
 require "ibm_watson/speech_to_text_v1"
@@ -108,6 +107,7 @@ class ApplicationController < ActionController::Base
                 lead.update({file: nil})
             end
         end
+        ''
     end
 end
 
