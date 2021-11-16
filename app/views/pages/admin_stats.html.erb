@@ -3,7 +3,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
 async defer></script>
 
-<div class='IBMWatson'></div>
+<div class='IBMWatson'>
+    <%= watson %>
+    <audio controls>
+        <source src="<%= audio_path '/hello_world.wav'%>">
+    </audio>
+</div>
+
 <script>
     var item = `<%= @address.to_json.html_safe %>`
     var test = item.substring(1)
