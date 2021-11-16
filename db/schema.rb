@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_161503) do
+ActiveRecord::Schema.define(version: 2021_11_16_190401) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "typeAddress", null: false
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2021_11_01_161503) do
     t.string "descriptionProject", null: false
     t.string "department", null: false
     t.string "message", null: false
-    t.binary "file", null: false
+    t.binary "file"
     t.datetime "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
