@@ -8,8 +8,8 @@ include SendGrid
 
 class ApplicationController < ActionController::Base
     helper_method :watson
-    helper_method :sendgrid
-                
+    
+
     def watson
         authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
             apikey: ENV["TEXT_TO_SPEECH_APIKEY"]
@@ -41,25 +41,5 @@ class ApplicationController < ActionController::Base
         audio_file.write(response)
         end
         return ''
-    end
-
-    
-    
-    def sendgrid(lead)
-        mail = Mail.new
-        mail.from = Email.new(email: 'rocketelevators11@gmail.com')
-        custom = Personalization.new
-        custom.add_to(Email.new(email: lead.email))
-        custom.add_dynamic_template_data({
-            "fullName" => lead.fullNameContact,
-            "projectName" => lead.nameProject
-        })
-        mail.add_personalization(custom)
-        mail.template_id = 'd-d25e6394d3434930835982c01f5eb980'
-
-        testing1 = SendGrid::API.new(api_key: ENV['SENDGRID_APIKEY'])
-
-        response = testing1.client.mail._('send').post(request_body: mail.to_json)
-        
     end
 end
