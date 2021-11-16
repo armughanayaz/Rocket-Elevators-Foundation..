@@ -2,13 +2,13 @@
 <div id="map" style="height: 400px;"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
 async defer></script>
-<%# 
+
 <div class='IBMWatson'>
-    <%= watson 
+    <%= watson %>
     <audio controls>
-        <source src="<%= audio_path '/hello_world.wav'">
+        <source src="<%= audio_path '/hello_world.wav'%>">
     </audio>
-</div> %>
+</div>
 
 <script>
     var address = `<%= @address.to_json.html_safe %>`
@@ -58,4 +58,3 @@ async defer></script>
     }
 
 </script>
-
