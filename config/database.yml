@@ -37,6 +37,9 @@ secondbase:
   development:
     <<: *postgres
     database: data_warehouse
+  development:
+    <<: *postgres
+    database: bot_development
   test:
     <<: *postgres
     database: data_warehouse_test
