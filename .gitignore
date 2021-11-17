@@ -28,6 +28,5 @@
 
 # Ignore database.yml
 /config/database.yml
-db/migrate/addresses-us-1000.json
 # Ignore application configuration
 /config/application.yml

@@ -104,6 +104,10 @@ gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', bra
 
 gem 'figaro'
 
+gem 'slack-ruby-client'
+
+gem 'async-websocket', '~> 0.8.0'
+
 gem 'sendgrid-ruby'
 
 gem 'zendesk_api', '~> 1.13', '>= 1.13.4'
