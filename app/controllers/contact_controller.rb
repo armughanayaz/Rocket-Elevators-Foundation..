@@ -21,7 +21,7 @@ class ContactController < ApplicationController
       mail.from = Email.new(email: 'rocketelevators13@gmail.com')
       custom = Personalization.new
       custom.add_to(Email.new(email: lead.email))
-      custom.dynamic_template_data({
+      custom.add_dynamic_template_data({
           "fullNameContact" => lead.fullNameContact,
           "nameProject" => lead.nameProject
       })
