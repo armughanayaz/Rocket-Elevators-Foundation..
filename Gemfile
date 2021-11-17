@@ -103,3 +103,8 @@ gem 'dropbox_api'
 gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', branch: 'master'
 
 gem 'figaro'
+
+gem 'slack-ruby-client'
+
+gem 'async-websocket', '~> 0.8.0'
+
