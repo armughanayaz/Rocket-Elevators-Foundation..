@@ -105,3 +105,5 @@ gem 'ibm_watson', git: 'https://github.com/watson-developer-cloud/ruby-sdk', bra
 gem 'figaro'
 
 gem 'sendgrid-ruby'
+
+gem 'zendesk_api', '~> 1.13', '>= 1.13.4'
