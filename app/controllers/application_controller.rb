@@ -1,5 +1,4 @@
 require 'dropbox-api'
-require 'dropbox_api'
 require "ibm_watson/speech_to_text_v1"
 require "ibm_watson/websocket/recognize_callback"
 require "ibm_watson/authenticators"
