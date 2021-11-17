@@ -170,6 +170,10 @@ end
 
 1.times do
     Lead.create([{
+        fullNameContact: Faker::Name.name,
+        compagnyName: Faker::Company.name,
+        email: 'lemyted21@gmail.com',
+        phoneNumber: Faker::PhoneNumber.cell_phone,
         fullNameContact: "Ted Lemy",
         compagnyName: Faker::Company.name,
         email: "lemyted@gmail.com",

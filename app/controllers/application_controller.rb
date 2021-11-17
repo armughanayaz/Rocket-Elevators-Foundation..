@@ -5,11 +5,14 @@ require "ibm_watson/websocket/recognize_callback"
 require "ibm_watson/authenticators"
 require "json"
 require "ibm_watson"
+require 'sendgrid-ruby'
+include SendGrid
 
 
 class ApplicationController < ActionController::Base
     helper_method :watson
-                
+    
+
     def watson
         authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
             apikey: ENV["TEXT_TO_SPEECH_APIKEY"]
