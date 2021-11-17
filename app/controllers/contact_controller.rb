@@ -18,12 +18,12 @@ class ContactController < ApplicationController
     def sendgrid(lead)
       puts 'sendgrid'
       mail = Mail.new
-      mail.from = Email.new(email: 'rocketelevators11@gmail.com')
+      mail.from = Email.new(email: 'rocketelevators13@gmail.com')
       custom = Personalization.new
       custom.add_to(Email.new(email: lead.email))
-      custom.add_dynamic_template_data({
-          "fullName" => lead.fullNameContact,
-          "projectName" => lead.nameProject
+      custom.dynamic_template_data({
+          "fullNameContact" => lead.fullNameContact,
+          "nameProject" => lead.nameProject
       })
       mail.add_personalization(custom)
       mail.template_id = 'd-d25e6394d3434930835982c01f5eb980'
