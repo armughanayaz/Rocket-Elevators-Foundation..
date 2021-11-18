@@ -24,4 +24,30 @@ class Elevator < ApplicationRecord
         # client = Slack::Web::Client.new
         # client.chat_postMessage(channel: 'C02LLLYB344', text: "#{message}", as_user: true)
     end
+
+
+    after_update :twilio
+    def twilio_sms
+        elevatorID = self.id
+        "The Elevator #{elevatorID} needs maintenance!"
+    end
+
+    # attr_accessor :account_sid, :auth_token, :twilio_client
+    def twilio_client
+        account_sid = ENV["account_sid"]
+        auth_token = ENV["auth_token"]
+        Twilio::REST::Client.new(account_sid, auth_token)
+    end
+
+    def twilio
+        client = twilio_client
+        sms = twilio_sms
+        # if self.status == 'intervention'
+        #     client.messages.create(
+        #             from: +18195104642,
+        #             to: ENV["phone_number"],
+        #             body: '#{sms} '
+        #     )
+        # end
+    end
 end

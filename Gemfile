@@ -111,3 +111,5 @@ gem 'async-websocket', '~> 0.8.0'
 gem 'sendgrid-ruby'
 
 gem 'zendesk_api', '~> 1.13', '>= 1.13.4'
+
+gem 'twilio-ruby'
