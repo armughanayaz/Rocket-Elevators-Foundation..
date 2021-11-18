@@ -22,7 +22,7 @@ class ContactController < ApplicationController
                                                                                                                                                               #{@contact.department} has a project named #{@contact.nameProject} which would require contribution from Rocket Elevators. 
                                                                                                                                                               #{@contact.descriptionProject}
                                                                                                                                                               Attached Message: #{@contact.message}
-                                                                                                                                                              The Contact uploaded an attachment"}, :submitter_id => $client.current_user.id , :priority => "urgent", :type => "question")
+                                                                                                                                                     The Contact uploaded an attachment"}, :submitter_id => $client.current_user.id , :priority => "urgent", :type => "question")
     end
 
     def sendgrid(lead)
