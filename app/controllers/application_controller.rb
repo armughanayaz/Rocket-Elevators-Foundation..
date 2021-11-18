@@ -5,10 +5,10 @@ require "ibm_watson/authenticators"
 require "json"
 require "ibm_watson"
 require 'sendgrid-ruby'
-include SendGrid
 
 
 class ApplicationController < ActionController::Base
+    include SendGrid
     helper_method :watson
     
 
