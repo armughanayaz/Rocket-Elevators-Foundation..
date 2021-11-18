@@ -1,15 +1,14 @@
 require 'dropbox-api'
-require 'dropbox_api'
 require "ibm_watson/speech_to_text_v1"
 require "ibm_watson/websocket/recognize_callback"
 require "ibm_watson/authenticators"
 require "json"
 require "ibm_watson"
 require 'sendgrid-ruby'
-include SendGrid
 
 
 class ApplicationController < ActionController::Base
+    include SendGrid
     helper_method :watson
     
 
@@ -46,9 +45,9 @@ class ApplicationController < ActionController::Base
     helper_method :dropbox
 
     def connectDropbox
-        token = "oEtmw2a3jcYAAAAAAAAAAZCpoqIRP3mq8gda7wj0O12Oxqgvf72lYk8bIQ5OF2Lt"
-        key = "nmhljn1ltn9hlz2"
-        secret = "8amfyjy9pqcuw72"
+        token = ENV["DROPBOX_TOKEN"]
+        key = ENV["DROPBOX_KEY"]
+        secret = ENV["DROPBOX_SECRET"]
         Dropbox::API::Config.app_key    = key
         Dropbox::API::Config.app_secret = secret
         Dropbox::API::Config.mode       = "sandbox" # if you have a single-directory app
@@ -113,4 +112,3 @@ class ApplicationController < ActionController::Base
         ''
     end
 end
-
