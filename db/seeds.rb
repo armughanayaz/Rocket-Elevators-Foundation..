@@ -70,7 +70,11 @@ id = 1
         numElevator: Faker::Number.between(from: 1, to: 30),
         compagnyName: Faker::Company.name,
         email: Faker::Internet.email,
-        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
+        typeService: modelA.sample,
+        totalElevatorPrice: Faker::Number.between(from: 10000, to: 30000),
+        total:Faker::Number.between(from: 100000, to: 300000),
+        installationFees:Faker::Number.between(from: 10000, to: 30000)
         }])
     
     elsif random == 'commercial' then
@@ -80,7 +84,11 @@ id = 1
         numElevator: Faker::Number.between(from: 10, to: 40),
         compagnyName: Faker::Company.name,
         email: Faker::Internet.email,
-        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
+        typeService: modelA.sample,
+        totalElevatorPrice: Faker::Number.between(from: 10000, to: 30000),
+        total:Faker::Number.between(from: 100000, to: 300000),
+        installationFees:Faker::Number.between(from: 10000, to: 30000)
         }])
         
     elsif random == 'corporate' then
@@ -93,7 +101,11 @@ id = 1
         numElevator: Faker::Number.between(from: 1, to: 30),
         compagnyName: Faker::Company.name,
         email: Faker::Internet.email,
-        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
+        typeService: modelA.sample,
+        totalElevatorPrice: Faker::Number.between(from: 10000, to: 30000),
+        total:Faker::Number.between(from: 100000, to: 300000),
+        installationFees:Faker::Number.between(from: 10000, to: 30000)
         }])
 
     elsif random == 'hybrid' then
@@ -106,7 +118,11 @@ id = 1
         numElevator: Faker::Number.between(from: 1, to: 30),
         compagnyName: Faker::Company.name,
         email: Faker::Internet.email,
-        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01')
+        created_at: Faker::Date.between(from: '2018-01-01', to: '2021-10-01'),
+        typeService: modelA.sample,
+        totalElevatorPrice: Faker::Number.between(from: 10000, to: 30000),
+        total:Faker::Number.between(from: 100000, to: 300000),
+        installationFees:Faker::Number.between(from: 10000, to: 30000)
         }])
     end
     id = id + 1
@@ -170,10 +186,6 @@ end
 
 1.times do
     Lead.create([{
-        fullNameContact: Faker::Name.name,
-        compagnyName: Faker::Company.name,
-        email: 'lemyted21@gmail.com',
-        phoneNumber: Faker::PhoneNumber.cell_phone,
         fullNameContact: "Ted Lemy",
         compagnyName: Faker::Company.name,
         email: "lemyted@gmail.com",

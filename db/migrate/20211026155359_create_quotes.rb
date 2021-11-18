@@ -9,7 +9,11 @@ class CreateQuotes < ActiveRecord::Migration[5.2]
       t.integer :numOccupant
       t.string :compagnyName
       t.string :email
-
+      t.string :typeService
+      t.decimal :totalElevatorPrice
+      t.decimal :total
+      t.decimal :installationFees
+      
       t.timestamps
     end
   end

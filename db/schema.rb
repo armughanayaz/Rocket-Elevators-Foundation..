@@ -148,6 +148,10 @@ ActiveRecord::Schema.define(version: 2021_11_16_190401) do
     t.integer "numOccupant"
     t.string "compagnyName"
     t.string "email"
+    t.string "typeService"
+    t.decimal "totalElevatorPrice", precision: 10
+    t.decimal "total", precision: 10
+    t.decimal "installationFees", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
