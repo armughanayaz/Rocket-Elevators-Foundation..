@@ -42,12 +42,11 @@ class Elevator < ApplicationRecord
     def twilio
         client = twilio_client
         sms = twilio_sms
-        # if self.status == 'intervention'
-        #     client.messages.create(
-        #             from: +18195104642,
-        #             to: ENV["phone_number"],
-        #             body: '#{sms} '
-        #     )
-        # end
+        if self.status == 'intervention'
+            client.messages.create(
+                    from: '+18195104642',
+                    to: ENV["phone_number"],
+                    body: "#{sms}"           )
+        end
     end
 end

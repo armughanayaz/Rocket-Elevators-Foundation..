@@ -1,13 +1,18 @@
-<h1 style='margin:0 auto; text-align:left; width:500px;'>Map of our clients</h1>
+<div class="heading-title heading-dotted text-center">
+						<h1>Map</h1>
+</div>
+
 <div id="map" style="height: 400px;"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
 async defer></script>
 
+<div class="heading-title heading-dotted text-center">
+						<h1>Ask Watson about the current state of our products</h1>
+</div>
 
-<h1 style='margin:0 auto; text-align:left; width:900px;'>Ask Watson about the current state of our products</h1>
 <div class='IBMWatson'>
     <%= watson %>
-    <button style="left: 50%;" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
+    <button style="left: 47%;" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
     <audio id="audio">
         <source src="<%= audio_path '/hello_world.wav'%>">
     </audio>
