@@ -1,17 +1,33 @@
-<h1>TEST 1 2 3</h1>
+<div class="heading-title heading-dotted text-center">
+						<h1>Map</h1>
+</div>
+
 <div id="map" style="height: 400px;"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
 async defer></script>
 
+<div class="heading-title heading-dotted text-center">
+						<h1>Ask Watson about the current state of our products</h1>
+</div>
+
 <div class='IBMWatson'>
     <%= watson %>
-    <audio controls>
+    <button style="left: 47%;" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
+    <audio id="audio">
         <source src="<%= audio_path '/hello_world.wav'%>">
     </audio>
+    <%# <%= sendgrid(Lead.all[101])%>
 </div>
 </div>
 
+
 <script>
+    $('#watson').on('click', ()=>{
+            var audio = $('#audio').get(0);
+            audio.paused? audio.play():audio.pause()
+            audio.paused? $('#watson').text('PLAY'):$('#watson').text('PAUSE')
+        })
+
     var address = `<%= @address.to_json.html_safe %>`
     var test = address.substring(1)
     var test2 = test.slice(0, -1);
