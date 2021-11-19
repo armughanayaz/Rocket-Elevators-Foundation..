@@ -8,6 +8,8 @@ require "ibm_watson"
 require 'sendgrid-ruby'
 
 
+
+
 class ApplicationController < ActionController::Base
     include SendGrid
     helper_method :watson
