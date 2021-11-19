@@ -5,6 +5,9 @@ require "ibm_watson/authenticators"
 require "json"
 require "ibm_watson"
 require 'sendgrid-ruby'
+require 'open_weather'
+
+
 
 
 class ApplicationController < ActionController::Base
@@ -110,5 +113,33 @@ class ApplicationController < ActionController::Base
             end
         end
         ''
+    end
+
+    helper_method :getWeather
+    def getAdressList
+        weather_list = []
+        street_adress = []
+        
+        Address.all.each do |adr|
+            weather_list.append("#{adr.city}, #{adr.country}")
+            street_adress.append("#{adr.numberAndStreet}")
+        end
+        [weather_list, street_adress]
+    end
+
+    def getWeather
+        options = { units: "metric", APPID: "6dcc118d471d3f2665895e8a16c18249" }
+        addresses = getAdressList[0]
+        number_and_street = getAdressList[1]
+        weather_by_address = {}
+        weather = nil
+        temperature = nil
+        addresses.each_with_index do |adr, i|
+            response = OpenWeather::Current.city(adr, options)
+            weather = response["weather"][0]["description"]
+            temperature = response["main"]["temp"]
+            weather_by_address[number_and_street[i]] = {"weather": weather, "temperature": temperature, "state": adr}
+        end
+        weather_by_address
     end
 end

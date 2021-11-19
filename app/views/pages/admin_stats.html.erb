@@ -4,7 +4,7 @@
 async defer></script>
 
 <div class='IBMWatson'>
-    <%= watson %>
+    <%# <%= watson %> %>
     <audio controls>
         <source src="<%= audio_path '/hello_world.wav'%>">
     </audio>
@@ -17,12 +17,14 @@ async defer></script>
     var test2 = test.slice(0, -1);
     var address_array = JSON.parse(test2)
 
+
     var info_marker = `<%= @info_marker.to_json.html_safe %>`
     test = info_marker.substring(1)
     test2 = test.slice(0, -1);
     var info_array = JSON.parse(test2)
+    var weatherInfo = JSON.parse(`<%= getWeather.to_json.html_safe %>`)
+    console.log(weatherInfo)
 
-    console.log(info_array)
 
     function initMap() {
         var infoWindow = new google.maps.InfoWindow();
@@ -39,6 +41,7 @@ async defer></script>
             });
             info_array.forEach(info => {
                 if (element.numberAndStreet == info.Address) {
+                    weather = weatherInfo[info.Address];
                     var content = "<ul>" +
                                   "<li>" + "Address: " + info.Address + "</li>" +
                                   "<li>" + "Customer full name: " + info.Client + "</li>" +
@@ -46,6 +49,8 @@ async defer></script>
                                   "<li>" + "Number of Batteries: " + info.NumberOfBattery + "</li>" +
                                   "<li>" +  "Number of Columns: " + info.NumberOfColumn + "</li>" +
                                   "<li>" + "Number of Elevators: " + info.NumberOfElevator + "</li>" +
+                                  "<li>" + "Weather: " + weather["weather"] + ", " + weather["temperature"] + " *C" + "</li>" +
+                                  "<li>" + "State: " + weather["state"] + "</li>" +
                                   "</ul>";
                     google.maps.event.addListener(marker, 'click', (function (marker) {
                         return function () {
@@ -61,3 +66,4 @@ async defer></script>
 </script>
 
 <%= dropbox %>
+
