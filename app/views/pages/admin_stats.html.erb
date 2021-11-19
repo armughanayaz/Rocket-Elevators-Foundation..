@@ -12,10 +12,10 @@ async defer></script>
 
 
 <div class='IBMWatson'>
-    <%# <%= watson %>
+    <%= watson %>
    
     <div id="content">
-        <button style="left: 47%; margin-bottom:2%" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
+        <button style="left: 47%; margin-bottom:2%" type="submit" id="watsonload" class="btn btn-primary">Load Watson</button>
         <canvas id="canvas"></canvas>
         <audio id="audio" controls></audio>
         
@@ -45,67 +45,71 @@ async defer></script>
     </style>
 
     <script>
-        window.onload = function() {
-  
-    var audio = document.getElementById("audio");
-    var source = document.getElementById("source");
-    audio.src = `<%= audio_path '/hello_world.wav'%>`
-    audio.load();
-    var canvas = document.getElementById("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight / 4;
+        var audio = document.getElementById("audio");
+            var source = document.getElementById("source");
+            var loadButton = document.getElementById("watsonload");
 
-    window.onclick = function() {
-            var context = new AudioContext();
-            var src = context.createMediaElementSource(audio);
-            var analyser = context.createAnalyser();
+            loadButton.onclick = function() {
+                audio.src = `<%= audio_path '/hello_world.wav'%>`
+                audio.load();
+                var canvas = document.getElementById("canvas");
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight / 4;
 
-           
-            var ctx = canvas.getContext("2d");
-
-            src.connect(analyser);
-            analyser.connect(context.destination);
-
-            analyser.fftSize = 256;
-
-            var bufferLength = analyser.frequencyBinCount;
-
-            var dataArray = new Uint8Array(bufferLength);
-
-            var WIDTH = canvas.width;
-            var HEIGHT = canvas.height;
-
-            var barWidth = (WIDTH / bufferLength) * 2.5;
-            var barHeight;
-            var x = 0;
-
-            function renderFrame() {
-                requestAnimationFrame(renderFrame);
-
-                x = 0;
-
-                analyser.getByteFrequencyData(dataArray);
-
-                ctx.fillStyle = "#000";
-                ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-                for (var i = 0; i < bufferLength; i++) {
-                    barHeight = dataArray[i];
-                    
-                    var r = barHeight + (10 * (i/bufferLength));
-                    var g = 82 * (i/bufferLength);
-                    var b = 250;
-
-                    ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                    ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-                    x += barWidth + 1;
-                }
+                setTimeout(createCanvas,0)
             }
 
-            renderFrame();
-        };
-    };
+
+            function createCanvas() {
+                    var context = new AudioContext();
+                    var src = context.createMediaElementSource(audio);
+                    var analyser = context.createAnalyser();
+
+
+                    var ctx = canvas.getContext("2d");
+
+                    src.connect(analyser);
+                    analyser.connect(context.destination);
+
+                    analyser.fftSize = 256;
+
+                    var bufferLength = analyser.frequencyBinCount;
+
+                    var dataArray = new Uint8Array(bufferLength);
+
+                    var WIDTH = canvas.width;
+                    var HEIGHT = canvas.height;
+
+                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barHeight;
+                    var x = 0;
+
+                    function renderFrame() {
+                        requestAnimationFrame(renderFrame);
+
+                        x = 0;
+
+                        analyser.getByteFrequencyData(dataArray);
+
+                        ctx.fillStyle = "#000";
+                        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                        for (var i = 0; i < bufferLength; i++) {
+                            barHeight = dataArray[i];
+                            
+                            var r = barHeight + (10 * (i/bufferLength));
+                            var g = 82 * (i/bufferLength);
+                            var b = 250;
+
+                            ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                            ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+                            x += barWidth + 1;
+                        }
+                    }
+
+                    renderFrame();
+                };
 
     
     </script>
@@ -179,5 +183,5 @@ async defer></script>
 
 </script>
 
-<%# <%= dropbox %>
+<%= dropbox %>
 
