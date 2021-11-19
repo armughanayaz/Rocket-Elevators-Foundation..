@@ -47,9 +47,9 @@ class ApplicationController < ActionController::Base
     helper_method :dropbox
 
     def connectDropbox
-        token = "oEtmw2a3jcYAAAAAAAAAAZCpoqIRP3mq8gda7wj0O12Oxqgvf72lYk8bIQ5OF2Lt"
-        key = "nmhljn1ltn9hlz2"
-        secret = "8amfyjy9pqcuw72"
+        token = ENV["DROPBOX_TOKEN"]
+        key = ENV["DROPBOX_KEY"]
+        secret = ENV["DROPBOX_SECRET"]
         Dropbox::API::Config.app_key    = key
         Dropbox::API::Config.app_secret = secret
         Dropbox::API::Config.mode       = "sandbox" # if you have a single-directory app
