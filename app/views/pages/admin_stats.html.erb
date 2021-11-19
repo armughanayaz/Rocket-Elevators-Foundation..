@@ -3,7 +3,7 @@
 </div>
 
 <div id="map" style="height: 400px;"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbt5Jh9HUerVLKOELNPSa7QMDxis2J3Do&callback=initMap" 
+<script src=<%= ENV["MAP_SOURCE"] %>
 async defer></script>
 
 <div class="heading-title heading-dotted text-center">
@@ -11,7 +11,7 @@ async defer></script>
 </div>
 
 <div class='IBMWatson'>
-    <%= watson %>
+    <%# <%= watson %>
     <button style="left: 47%;" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
     <br>
     <audio style="margin-left: 40.5%;" id="audio" controls>
@@ -62,8 +62,8 @@ async defer></script>
             });
             info_array.forEach(info => {
                 if (element.numberAndStreet == info.Address) {
-                    url = "http://api.weatherapi.com/v1/forecast.json?key=a2145b9dca544c7db7f133657211911&q=" + element.lat + ',' + element.long + "&days=1&aqi=no&alerts=no"
-                    x = JSON.parse(httpGet(url)).current;
+                    url = "http://api.weatherapi.com/v1/forecast.json?key=" + weather_api_key + "&q=" + element.lat + ',' + element.long + "&days=1&aqi=no&alerts=no"
+                    x = JSON.parse(httpGet(url));
                     var content = "<ul>" +
                                   "<li>" + "Address: " + info.Address + "</li>" +
                                   "<li>" + "Customer full name: " + info.Client + "</li>" +
@@ -71,7 +71,8 @@ async defer></script>
                                   "<li>" + "Number of Batteries: " + info.NumberOfBattery + "</li>" +
                                   "<li>" +  "Number of Columns: " + info.NumberOfColumn + "</li>" +
                                   "<li>" + "Number of Elevators: " + info.NumberOfElevator + "</li>" +
-                                  "<li>" + "Weather: " + x['condition']['text'] + " " + x["temp_c"] + " *C" + "</li>" +
+                                  "<li>" + "Weather: " + x.current['condition']['text'] + " " + x.current["temp_c"] + " *C" + "</li>" +
+                                  "<li>" + "Local Time: " + x.location['localtime'] + "</li>" +
                                   "</ul>";
                     google.maps.event.addListener(marker, 'click', (function (marker) {
                         return function () {
