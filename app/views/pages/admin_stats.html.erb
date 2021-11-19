@@ -10,13 +10,105 @@ async defer></script>
 						<h1>Ask Watson about the current state of our products</h1>
 </div>
 
+
 <div class='IBMWatson'>
     <%# <%= watson %>
-    <button style="left: 47%;" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
-    <br>
-    <audio style="margin-left: 40.5%;" id="audio" controls>
-        <source src="<%= audio_path '/hello_world.wav'%>">
-    </audio>
+   
+    <div id="content">
+        <button style="left: 47%; margin-bottom:2%" type="submit" id="watson" class="btn btn-primary">Ask Watson</button>
+        <canvas id="canvas"></canvas>
+        <audio id="audio" controls></audio>
+        
+    </div>
+
+    <style>
+    #thefile {
+    position: static;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    }
+
+    #canvas {
+    position: static;
+    width: 100%;
+    height: 0%;
+    border: 1px solid black;
+    }
+
+    audio {
+    position: static;
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    }
+    </style>
+
+    <script>
+        window.onload = function() {
+  
+    var audio = document.getElementById("audio");
+    var source = document.getElementById("source");
+    audio.src = `<%= audio_path '/hello_world.wav'%>`
+    audio.load();
+    var canvas = document.getElementById("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight / 4;
+
+    window.onclick = function() {
+            var context = new AudioContext();
+            var src = context.createMediaElementSource(audio);
+            var analyser = context.createAnalyser();
+
+           
+            var ctx = canvas.getContext("2d");
+
+            src.connect(analyser);
+            analyser.connect(context.destination);
+
+            analyser.fftSize = 256;
+
+            var bufferLength = analyser.frequencyBinCount;
+
+            var dataArray = new Uint8Array(bufferLength);
+
+            var WIDTH = canvas.width;
+            var HEIGHT = canvas.height;
+
+            var barWidth = (WIDTH / bufferLength) * 2.5;
+            var barHeight;
+            var x = 0;
+
+            function renderFrame() {
+                requestAnimationFrame(renderFrame);
+
+                x = 0;
+
+                analyser.getByteFrequencyData(dataArray);
+
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                for (var i = 0; i < bufferLength; i++) {
+                    barHeight = dataArray[i];
+                    
+                    var r = barHeight + (10 * (i/bufferLength));
+                    var g = 82 * (i/bufferLength);
+                    var b = 250;
+
+                    ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                    ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+                    x += barWidth + 1;
+                }
+            }
+
+            renderFrame();
+        };
+    };
+
+    
+    </script>
 </div>
 
 
@@ -87,5 +179,5 @@ async defer></script>
 
 </script>
 
-<%= dropbox %>
+<%# <%= dropbox %>
 
