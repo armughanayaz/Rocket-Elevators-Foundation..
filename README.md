@@ -116,4 +116,4 @@ To access the database, use Dbeaver or MySQLWorkbench, which shows a history of 
 <br>
 
 ##
-Project Link: [https://github.com/AlexWallot/Rocket_Elevators_Information_System](https://github.com/AlexWallot/Rocket_Elevators_Information_System)
+Project Link: [https://github.com/AlexWallot/Rocket_Elevators_API](https://github.com/lemyted/Rocket_Elevators_API)
