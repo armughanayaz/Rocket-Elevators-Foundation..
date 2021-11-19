@@ -1,11 +1,11 @@
 require 'dropbox-api'
+require 'dropbox_api'
 require "ibm_watson/speech_to_text_v1"
 require "ibm_watson/websocket/recognize_callback"
 require "ibm_watson/authenticators"
 require "json"
 require "ibm_watson"
 require 'sendgrid-ruby'
-require 'open_weather'
 
 
 
@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
     include SendGrid
     helper_method :watson
     
-
     def watson
         authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
             apikey: ENV["TEXT_TO_SPEECH_APIKEY"]
@@ -26,7 +25,7 @@ class ApplicationController < ActionController::Base
 
         text_to_speech.service_url = ENV["TEXT_TO_SPEECH_URL"]
         
-        message = "Hi user #{current_user.id}. #{Elevator::count} elevators are presently deployed in all the #{Building::count} 
+        message = "Hi #{current_user.employee.first_name}. #{Elevator::count} elevators are presently deployed in all the #{Building::count} 
                 buildings of your #{Customer::count} customers. Currently, #{Elevator.where(status: 'offline').count} elevators are not in Running Status 
                 and are being serviced.  #{Quote::count} quotes are awaiting processing.  #{Lead::count} leads are currently registered in your contacts. 
                 #{Batterie::count} Batteries are deployed across #{Address.where(id: Building.select(:addressid).distinct).select(:city).distinct.count} cities."
@@ -48,9 +47,9 @@ class ApplicationController < ActionController::Base
     helper_method :dropbox
 
     def connectDropbox
-        token = ENV["DROPBOX_TOKEN"]
-        key = ENV["DROPBOX_KEY"]
-        secret = ENV["DROPBOX_SECRET"]
+        token = "oEtmw2a3jcYAAAAAAAAAAZCpoqIRP3mq8gda7wj0O12Oxqgvf72lYk8bIQ5OF2Lt"
+        key = "nmhljn1ltn9hlz2"
+        secret = "8amfyjy9pqcuw72"
         Dropbox::API::Config.app_key    = key
         Dropbox::API::Config.app_secret = secret
         Dropbox::API::Config.mode       = "sandbox" # if you have a single-directory app
@@ -114,32 +113,5 @@ class ApplicationController < ActionController::Base
         end
         ''
     end
-
-    helper_method :getWeather
-    def getAdressList
-        weather_list = []
-        street_adress = []
-        
-        Address.all.each do |adr|
-            weather_list.append("#{adr.city}, #{adr.country}")
-            street_adress.append("#{adr.numberAndStreet}")
-        end
-        [weather_list, street_adress]
-    end
-
-    def getWeather
-        options = { units: "metric", APPID: "6dcc118d471d3f2665895e8a16c18249" }
-        addresses = getAdressList[0]
-        number_and_street = getAdressList[1]
-        weather_by_address = {}
-        weather = nil
-        temperature = nil
-        addresses.each_with_index do |adr, i|
-            response = OpenWeather::Current.city(adr, options)
-            weather = response["weather"][0]["description"]
-            temperature = response["main"]["temp"]
-            weather_by_address[number_and_street[i]] = {"weather": weather, "temperature": temperature, "state": adr}
-        end
-        weather_by_address
-    end
 end
+
