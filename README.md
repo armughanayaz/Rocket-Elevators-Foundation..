@@ -33,6 +33,18 @@ the Admin was able to analyse those data.
 
 <br>
 
+We have 7 API on the project
+
+- **[Maps JavaScript API]**
+- **[Twillo]**
+- **[Zendesk]**
+- **[Sengrid]**
+- **[IBM Watson]**
+- **[Dropbox]**
+- **[Slack]**
+
+If you want to test Dropbox, you have to create an user and a lead and going on the Admin_Stats page.
+
 ## Website deployed
 
 * ### [rocketlift.ca/](https://rocketlift.ca/)
@@ -91,13 +103,13 @@ To access the database, use Dbeaver or MySQLWorkbench, which shows a history of 
 <br>
 
 <!-- TEAM MWMBERS -->
-## TEAM Project-RoR ~> Members:
+## TEAM Project~> Members:
 
-- **[Jones Tavares](https://github.com/johnnybigoo)**
+- **[Ted Lemy](https://github.com/lemyted)**
 - **[Alex Wallot](https://github.com/AlexWallot)**
-- **[Alexandre Gagné](https://github.com/Namial)**
-- **[Carl-Gregor](https://github.com/Dreaith)**
-- **[Khashayar Hedayati](https://github.com/khedayati)**
+- **[Luka Trudel](https://github.com/LukaTrudel)**
+- **[Rafik Hoceini](https://github.com/rafikhoceini)**
+- **[Armughan Ayaz Janjua]**
 
 
 
