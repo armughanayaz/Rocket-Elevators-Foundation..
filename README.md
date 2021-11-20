@@ -43,7 +43,11 @@ We have 7 API on the project
 - **[Dropbox]**
 - **[Slack]**
 
-If you want to test Dropbox, you have to create an user and a lead and going on the Admin_Stats page.
+If you want to test Dropbox, you have to create a customer (from backoffice) and a lead (from the index page) with the same phone number and email and go on the Admin_Stats page to trigger Dropbox.
+
+If you want to test google maps, wait for it to finish loading, even if the browser isn't loading anymore.
+
+If you want to test watson, press on the button to load him.
 
 ## Website deployed
 
