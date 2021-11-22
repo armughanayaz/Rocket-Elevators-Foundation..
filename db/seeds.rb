@@ -363,3 +363,34 @@ compteur = 0
 end 
 
 Rake::Task['db:main'].invoke
+
+counter = 1
+buildingId = 1
+batteryID = 1
+columnID = 1
+elevatorID = 1
+result = ['Success', 'Failure', 'Incomplete']
+status = ['Pending', 'InProgress', 'Interrupted', 'Resumed', 'Complete']
+400.times do
+    FactIntervention.create([{
+        employeeID: Faker::Number.between(from: 21, to: 100),
+        buildingID: buildingId,
+        batteryID: batteryID,
+        columnID: columnID,
+        elevatorID: elevatorID,
+        dateAndTimeInterventionStart: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
+        dateAndTimeInterventionEnd: Faker::Time.between_dates(from: Date.today, to: Date.today + 1, period: :all),
+        result: result.sample,
+        report: Faker::Lorem.paragraph,
+        status: status.sample
+    }])
+    if counter % 2 == 0
+        columnID += 1
+    end
+    if counter % 4 == 0
+        buildingId += 1
+        batteryID += 1
+    end
+    counter += 1
+    elevatorID += 1
+end
