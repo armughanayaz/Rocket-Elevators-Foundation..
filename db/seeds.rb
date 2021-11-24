@@ -371,7 +371,7 @@ columnID = 1
 elevatorID = 1
 result = ['Success', 'Failure', 'Incomplete']
 status = ['Pending', 'InProgress', 'Interrupted', 'Resumed', 'Complete']
-400.times do
+1600.times do
     FactIntervention.create([{
         employeeID: Faker::Number.between(from: 21, to: 100),
         buildingID: buildingId,
@@ -384,13 +384,15 @@ status = ['Pending', 'InProgress', 'Interrupted', 'Resumed', 'Complete']
         report: Faker::Lorem.paragraph,
         status: status.sample
     }])
-    if counter % 2 == 0
+    if counter % 4 == 0
+        elevatorID +=1
+    end
+    if counter % 8 == 0
         columnID += 1
     end
-    if counter % 4 == 0
+    if counter % 16 == 0
         buildingId += 1
         batteryID += 1
     end
     counter += 1
-    elevatorID += 1
 end
