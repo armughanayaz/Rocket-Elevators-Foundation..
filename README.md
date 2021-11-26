@@ -113,7 +113,7 @@ To access the database, use Dbeaver or MySQLWorkbench, which shows a history of 
 - **[Alex Wallot](https://github.com/AlexWallot)**
 - **[Luka Trudel](https://github.com/LukaTrudel)**
 - **[Rafik Hoceini](https://github.com/rafikhoceini)**
-- **[Armughan Ayaz Janjua]**
+- **[Armughan Ayaz Janjua](https://github.com/armughanayaz)**
 
 
 
