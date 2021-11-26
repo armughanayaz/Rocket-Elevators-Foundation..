@@ -55,7 +55,7 @@ Employee.create(id: 21,first_name: 'Jonathan',last_name: 'Murray',title: 'Develo
 typeA = ['residential', 'commercial', 'corporate', 'hybrid']
 typeB = ['residential', 'commercial', 'corporate']
 modelA = ['standard', 'premium', 'excelium']
-statusA = ['online','down','up','offline','maintenance','busy','crowded','empty']
+statusA = ['online','down','up','offline','maintenance','busy','crowded','empty','intervention']
 informationA =['type', 'construction_year', 'elevator_shaft_amount','amount_of_floor','building_status' , 'model','status','number_of_occupants' ]
 
 id = 1
