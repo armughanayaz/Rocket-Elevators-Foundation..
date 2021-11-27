@@ -22,7 +22,7 @@ Rocket Elevators Information System is the 4th and 5th project for the Odyssey 1
 
 By the 4th week We have created a CRUD website using a using Ruby on Rails with the website created in the Genesis Program. 
 
-website used: [rocketelevators-jt.com/](http://rocketelevators-jt.com/)
+website used: [rocketelevators-jt.com/](https://rocketlift.ca/)
 
 We have also included a MySql Database that saves the quotations inserted in the quote form, and an Admin page.
 
