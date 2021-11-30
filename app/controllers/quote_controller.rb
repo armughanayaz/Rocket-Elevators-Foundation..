@@ -14,15 +14,15 @@ class QuoteController < ApplicationController
     zendesk
   end
 
-  def zendesk
-    ZendeskAPI::Ticket.new($client, :id => 1, :priority => "urgent") # doesn't actually send a request, must explicitly call #save!
-    ZendeskAPI::Ticket.create!($client, :type => "task", :subject => "#{@quote.compagnyName}", :comment => { :value => "Comment: The company #{@quote.compagnyName} as made a quote for a building of type #{@quote.type_building} and wants the #{@quote.typeService} service. 
-                                                                                                       Quote information
-                                                                                                       Number of Elevator: #{@quote.numElevator}
-                                                                                                       Total Elevators Price:#{@quote.totalElevatorPrice}
-                                                                                                       Installation Fees: #{@quote.installationFees}
-                                                                                                       Total: #{@quote.total}"}, :submitter_id => $client.current_user.id , :priority => "urgent")
-  end 
+  # def zendesk
+  #   ZendeskAPI::Ticket.new($client, :id => 1, :priority => "urgent") # doesn't actually send a request, must explicitly call #save!
+  #   ZendeskAPI::Ticket.create!($client, :type => "task", :subject => "#{@quote.compagnyName}", :comment => { :value => "Comment: The company #{@quote.compagnyName} as made a quote for a building of type #{@quote.type_building} and wants the #{@quote.typeService} service. 
+  #                                                                                                      Quote information
+  #                                                                                                      Number of Elevator: #{@quote.numElevator}
+  #                                                                                                      Total Elevators Price:#{@quote.totalElevatorPrice}
+  #                                                                                                      Installation Fees: #{@quote.installationFees}
+  #                                                                                                      Total: #{@quote.total}"}, :submitter_id => $client.current_user.id , :priority => "urgent")
+  # end 
 
   private
   def quote_params

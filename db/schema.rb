@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_190401) do
+ActiveRecord::Schema.define(version: 2021_11_30_183451) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "typeAddress", null: false
@@ -125,6 +125,11 @@ ActiveRecord::Schema.define(version: 2021_11_16_190401) do
     t.index ["user_id"], name: "fk_rails_dcfd3d4fc3"
   end
 
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "fullNameContact", null: false
     t.string "compagnyName", null: false
@@ -148,10 +153,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_190401) do
     t.integer "numOccupant"
     t.string "compagnyName"
     t.string "email"
-    t.string "typeService"
-    t.decimal "totalElevatorPrice", precision: 10
-    t.decimal "total", precision: 10
-    t.decimal "installationFees", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
