@@ -1,5 +1,38 @@
 <h1>New Intervention</h1>
 
-<%= render 'form', intervention: @intervention %>
+<!-- INTERVENTION FORM -->
+<% if user_signed_in? && current_user.is_employee(current_user.email) %> 
+  <li>
 
-<%= link_to 'Back', interventions_path %>
+<br/><br/><br/><br/><br/>
+
+<%= form_tag "/intervention", method: 'post' do %>
+<div id="formbackground" style="background-image: url('/2-apartment-building-elevator.jpg');">
+	<div class="container  formStyle">
+	  <h1> Intervention Request Form </h1>
+	  <h3> Please start by selecting the client</h3>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- entity selector--> 
+			<%= form_for @intervention do |f| %>
+            <div class="field">
+			<%= f.label :"Client Name" %><br />
+             <%= f.collection_select :CustomerID, Customer.order(:id), :id, :contact_full_name, include_blank: true, :required => true %>
+            </div>
+			<div class="field" id="Building">
+				<%= f.label :"Building ID" %><br />
+				<%= f.grouped_collection_select  :BuildingID, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true, :required => true %>
+			</div>
+			<div class="field">
+				<%= f.label :"Battery ID" %><br />
+				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :building_id, :id, include_blank: true, :required => true %>
+			</div>
+			<div class="field">
+				<%= f.label :"Column ID" %><br />
+				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :battery_id, :id, include_blank: true , :required => true%>
+			</div>
+			<div class="field">
+				<%= f.label :"Elevator ID" %><br />
+				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :column_id, :id, include_blank: true, :required => true %>
+			</div>				

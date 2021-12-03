@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_183451) do
+ActiveRecord::Schema.define(version: 2021_12_01_195821) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "typeAddress", null: false
@@ -128,6 +128,19 @@ ActiveRecord::Schema.define(version: 2021_11_30_183451) do
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author"
+    t.bigint "customerId", null: false
+    t.bigint "buildingId", null: false
+    t.bigint "batterieId", null: false
+    t.bigint "columnId"
+    t.bigint "elevatorId"
+    t.bigint "employeeId"
+    t.date "start"
+    t.date "end"
+    t.string "result"
+    t.string "report"
+    t.string "status"
+    t.index ["author"], name: "fk_rails_372877a32f"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -179,4 +192,5 @@ ActiveRecord::Schema.define(version: 2021_11_30_183451) do
   add_foreign_key "customers", "users", column: "userId"
   add_foreign_key "elevators", "columns", column: "columnId"
   add_foreign_key "employees", "users"
+  add_foreign_key "interventions", "employees", column: "author"
 end
