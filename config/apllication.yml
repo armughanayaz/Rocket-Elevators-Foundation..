@@ -6,6 +6,6 @@ MYSQL_DATABASE: "AlexWallot"
 POSTGRESQL_DATABASE: "Alex_Wallot"
 HOST_MYSQL: "codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com"
 HOST_POSTGRESQL: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com"
-ZENDESK_URL: https://armughanajcodeboxx.zendesk.com/api/v2
-ZENDESK_USERNAME: armughanajcodeboxx@gmail.com
-ZENDESK_APIKEY: 02c3bc8ef97f89a9e85d75ef41bc415ed4fd18a4dfe4110f33d2c7ee68169cd6
+ZENDESK_URL: "https://armughanajcodeboxx.zendesk.com/api/v2"
+ZENDESK_USERNAME: "armughanajcodeboxx@gmail.com"
+ZENDESK_APIKEY: "02c3bc8ef97f89a9e85d75ef41bc415ed4fd18a4dfe4110f33d2c7ee68169cd6"

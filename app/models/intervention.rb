@@ -1,2 +1,3 @@
 class Intervention < ApplicationRecord
+    
 end

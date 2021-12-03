@@ -16,7 +16,7 @@ default: &default
   username: root
   password: janjua123
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  
 
 postgres: &postgres
   adapter: postgresql
